@@ -1,0 +1,20 @@
+{
+  "name": "react-authentication-with-twitter-google-facebook-and-github",
+  "version": "1.0.0",
+  "description": "- [FakeReference](https://FakeReference.com)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0",
+    "nodemon": "^2.0.0"
+  }
+}
