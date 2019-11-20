@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import io from 'socket.io-client'
+import OAuth from './OAuth'
+import Loading from './Loading'
+import Footer from './Footer'
+import { API_URL } from './config'
+import './App.css'
+const socket = io(API_URL)
+const providers = ['twitter', 'google', 'facebook', 'github']
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+
+  state = {
+    loading: true
+  }
+
+  componentDidMount() {
+    fetch(`${API_URL}/wake-up`)
+      .then(res => {
+        if (res.ok) {
+          this.setState({ loading: false })
+        }
+      })
+  }
+
+  render() {
+    const buttons = (providers, socket) =>
+      providers.map(provider =>
+        <OAuth
+          provider={provider}
+          key={provider}
+          socket={socket}
+        />
+      )
+
+    return (
+      <div className='wrapper'>
+        <div className='container'>
+          {this.state.loading
+            ? <Loading />
+            : buttons(providers, socket)
+          }
+        </div>
+        <Footer />
+      </div>
+    )
+  }
 }
-
-export default App;

@@ -1,10 +1,12 @@
 {
   "name": "react-authentication-with-twitter-google-facebook-and-github",
   "version": "1.0.0",
-  "description": "- [FakeReference](https://FakeReference.com)",
-  "main": "index.js",
+  "description": "auth with social networks",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
