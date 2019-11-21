@@ -11,7 +11,7 @@ const providers = ['twitter', 'google', 'facebook', 'github']
 export default class App extends Component {
 
   state = {
-    loading: true
+    loading: false
   }
 
   componentDidMount() {
